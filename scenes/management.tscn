@@ -2,7 +2,11 @@
 
 [ext_resource type="Script" uid="uid://dxsx66dvp3fs5" path="res://scripts/management.gd" id="1"]
 
+<<<<<<< HEAD
 [node name="Management" type="Control" unique_id=1278501402]
+=======
+[node name="Management" type="Control" unique_id=165548936]
+>>>>>>> origin/main
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

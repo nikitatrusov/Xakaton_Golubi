@@ -27,9 +27,24 @@ func _label(text: String, size := 18, color := Color.WHITE) -> Label:
 func _build() -> void:
 	_clear()
 	var bg := ColorRect.new()
-	bg.color = Color("#264653")
+	bg.color = Color.BLACK
 	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
 	add_child(bg)
+
+	var video := VideoStreamPlayer.new()
+	video.stream = load("res://pigeon_post_loop_1280x720.ogv")   # проверьте точный путь и имя файла
+	video.autoplay = true
+	video.loop = true
+	video.expand = true
+	video.set_anchors_preset(Control.PRESET_FULL_RECT)
+	video.offset_top = 70
+	video.offset_bottom = -120
+	add_child(video)
+	
+	var dim := ColorRect.new()
+	dim.color = Color(0, 0, 0, 0.4)
+	dim.set_anchors_preset(Control.PRESET_FULL_RECT)
+	add_child(dim)
 
 	var margin := MarginContainer.new()
 	margin.set_anchors_preset(Control.PRESET_FULL_RECT)
