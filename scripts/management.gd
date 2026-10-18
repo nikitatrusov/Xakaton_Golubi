@@ -130,14 +130,31 @@ func _build() -> void:
 	shop.add_child(hire)
 	box.add_child(shop)
 
-	# --- Отправка ---
-	box.add_child(_label("Расчёт дня: корм −%d, ожидаемый доход +%d" % [total_feed, total_income], 18, Color("#e9c46a")))
+		# --- Отправка (Правый нижний угол) ---
+	var bottom_right := MarginContainer.new()
+	bottom_right.set_anchors_preset(Control.PRESET_BOTTOM_RIGHT)
+	bottom_right.add_theme_constant_override("margin_right", 20)
+	bottom_right.add_theme_constant_override("margin_bottom", 20)
+	bottom_right.grow_horizontal = Control.GROW_DIRECTION_BEGIN
+	bottom_right.grow_vertical = Control.GROW_DIRECTION_BEGIN
+	add_child(bottom_right)
+
+	var corner_box := VBoxContainer.new()
+	corner_box.add_theme_constant_override("separation", 5)
+	bottom_right.add_child(corner_box)
+
+	# Текст с расчетом дня
+	corner_box.add_child(_label("Расчёт дня: корм −%d, ожидаемый доход +%d" % [total_feed, total_income], 18, Color("#e9c46a")))
+
+	# Сама кнопка
 	var send := Button.new()
-	send.text = "Отправить голубей"
-	send.custom_minimum_size = Vector2(0, 48)
+	send.text = "Играть"
+	send.custom_minimum_size = Vector2(250, 48) # Лучше задать фиксированную ширину
 	send.disabled = assign.is_empty() or total_feed > Game.gold or Game.relic_choices.size() > 0
 	send.pressed.connect(_on_send)
-	box.add_child(send)
+	
+	# ВОТ ГЛАВНОЕ ИСПРАВЛЕНИЕ: добавляем кнопку в corner_box, а не в box!
+	corner_box.add_child(send) 
 
 
 func _build_end(box: VBoxContainer) -> void:
