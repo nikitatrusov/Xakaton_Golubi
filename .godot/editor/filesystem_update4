@@ -1,2 +1,4 @@
 res://scenes/management.tscn
 res://scripts/management.gd
+res://pigeon_post_loop_1280x720.ogv
+res://scripts/flight.gd
