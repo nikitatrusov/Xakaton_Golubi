@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene format=3 uid="uid://bsvkdnkjskjx4"]
 
-[ext_resource type="Script" path="res://scripts/management.gd" id="1"]
+[ext_resource type="Script" uid="uid://dxsx66dvp3fs5" path="res://scripts/management.gd" id="1"]
 
-[node name="Management" type="Control"]
+[node name="Management" type="Control" unique_id=165548936]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
